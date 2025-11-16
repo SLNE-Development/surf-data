@@ -1,12 +1,11 @@
 package dev.slne.surf.data.core.config
 
 import kotlinx.serialization.Serializable
-import org.springframework.beans.factory.annotation.Configurable
+import org.spongepowered.configurate.objectmapping.ConfigSerializable
 
-@Configurable
-@Serializable
+@ConfigSerializable
 data class RedisConfig(
-    val host: String,
-    val port: Int,
-    val password: String?,
+    val host: String = "localhost",
+    val port: Int = 6379,
+    val password: String? = null,
 )

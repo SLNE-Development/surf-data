@@ -27,6 +27,7 @@ allprojects {
     configurations.all {
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-reactor")
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-reactive")
+        exclude(group = "org.reactivestreams", module = "reactive-streams")
     }
 
     tasks.withType<ShadowJar> {

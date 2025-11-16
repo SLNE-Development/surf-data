@@ -52,16 +52,8 @@ class DataWebClientConfiguration {
 
 
     @Bean
-    fun webClientFactory(): HttpServiceProxyFactory {
-        val webClient = getBean<WebClient>()
+    fun webClientFactory(webClient: WebClient): HttpServiceProxyFactory {
         val adapter = WebClientAdapter.create(webClient)
-
         return HttpServiceProxyFactory.builderFor(adapter).build()
     }
 }
-
-inline fun <reified T : Any> createWebClient() =
-    getBean<HttpServiceProxyFactory>().createWebClient<T>()
-
-inline fun <reified T : Any> HttpServiceProxyFactory.createWebClient() =
-    this.createClient(T::class.java)

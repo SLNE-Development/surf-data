@@ -1,27 +1,26 @@
 package dev.slne.surf.data.core.config
 
-import kotlinx.serialization.Serializable
+import org.apache.commons.lang3.RandomStringUtils
+import org.spongepowered.configurate.objectmapping.ConfigSerializable
 import org.spongepowered.configurate.objectmapping.meta.Comment
-import org.springframework.beans.factory.annotation.Configurable
 
-@Configurable
-@Serializable
+@ConfigSerializable
 data class WebConfig(
-    val host: String,
-    val bearerToken: String,
+    val host: String = "localhost",
+    val bearerToken: String = RandomStringUtils.secureStrong().nextAlphanumeric(128),
 
     @param:Comment("Timeout in milliseconds for establishing a connection")
-    val connectionTimeout: Int,
+    val connectionTimeout: Int = 500,
 
     @param:Comment("Timeout in milliseconds for reading data")
-    val readTimeout: Int,
+    val readTimeout: Int = 1500,
 
     @param:Comment("Timeout in milliseconds for writing data")
-    val writeTimeout: Int,
+    val writeTimeout: Int = 1500,
 
     @param:Comment("Timeout in milliseconds for receiving a response")
-    val responseTimeout: Int,
+    val responseTimeout: Int = 3000,
 
     @param:Comment("Number of retries for failed requests")
-    val maxRetries: Int,
+    val maxRetries: Int = 3,
 )

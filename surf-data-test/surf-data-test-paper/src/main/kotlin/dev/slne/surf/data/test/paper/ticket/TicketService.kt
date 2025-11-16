@@ -1,13 +1,13 @@
 package dev.slne.surf.data.test.paper.ticket
 
-import dev.slne.surf.data.core.configuration.createWebClient
 import org.springframework.stereotype.Component
+import org.springframework.web.service.invoker.HttpServiceProxyFactory
 import java.util.*
 
 @Component
-class TicketService {
+class TicketService(private val httpServiceProxyFactory: HttpServiceProxyFactory) {
     private val ticketRepository by lazy {
-        createWebClient<TicketRepository>()
+        httpServiceProxyFactory.createClient(TicketRepository::class.java)
     }
 
     suspend fun getTicketByTicketId(ticketId: UUID) =
