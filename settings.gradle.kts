@@ -15,3 +15,6 @@ rootProject.name = "surf-data"
 include("surf-data-core")
 include("surf-data-paper")
 include("surf-data-velocity")
+
+include("surf-data-test:surf-data-test-paper")
+include("surf-data-test:surf-data-test-velocity")

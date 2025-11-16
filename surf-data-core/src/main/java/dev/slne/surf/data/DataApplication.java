@@ -32,11 +32,12 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @SpringBootApplication
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@EntityScan
 public @interface DataApplication {
 
-    @AliasFor(annotation = SpringBootApplication.class, attribute = "scanBasePackages")
-    String[] scanBasePackages() default {};
+  @AliasFor(annotation = SpringBootApplication.class, attribute = "scanBasePackages")
+  String[] scanBasePackages() default {};
 
-    @AliasFor(annotation = EntityScan.class, attribute = "basePackages")
-    String[] entityScanBasePackages() default {};
+  @AliasFor(annotation = EntityScan.class, attribute = "basePackages")
+  String[] entityScanBasePackages() default {};
 }

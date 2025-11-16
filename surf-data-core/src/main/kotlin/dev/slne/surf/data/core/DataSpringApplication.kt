@@ -7,12 +7,11 @@ import org.springframework.boot.WebApplicationType
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.core.io.DefaultResourceLoader
-import kotlin.reflect.KClass
 
 class DataSpringApplication {
     companion object {
         fun start(
-            source: KClass<*>,
+            source: Class<*>,
             primaryClassLoader: ClassLoader,
             vararg classLoaders: ClassLoader,
         ): ConfigurableApplicationContext {
@@ -25,7 +24,7 @@ class DataSpringApplication {
                 addAll(classLoaders)
             }
 
-            val builder = SpringApplicationBuilder(source.java).apply {
+            val builder = SpringApplicationBuilder(source).apply {
                 resourceLoader(
                     DefaultResourceLoader(
                         JoinClassLoader(

@@ -9,6 +9,7 @@ dependencies {
 surfPaperPluginApi {
     mainClass("dev.slne.surf.data.paper.PaperMain")
     generateLibraryLoader(false)
+    foliaSupported(true)
 
     authors.add("Ammo")
 
