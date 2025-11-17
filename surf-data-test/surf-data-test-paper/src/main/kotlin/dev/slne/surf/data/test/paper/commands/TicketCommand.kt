@@ -19,8 +19,6 @@ fun ticketCommand() = commandAPICommand("ticket") {
     textArgument("ticketId")
 
     anyExecutor { sender, arguments ->
-
-
         val log = logger()
         plugin.context.beanDefinitionNames.forEach {
             log.atInfo().log("Bean: $it | ${plugin.context.getBean(it)::class.qualifiedName}")
