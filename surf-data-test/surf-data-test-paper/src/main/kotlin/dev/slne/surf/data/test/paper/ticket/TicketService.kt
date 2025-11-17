@@ -5,9 +5,11 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory
 import java.util.*
 
 @Component
-class TicketService(private val httpServiceProxyFactory: HttpServiceProxyFactory) {
+class TicketService(
+    val webClientFactory: HttpServiceProxyFactory
+) {
     private val ticketRepository by lazy {
-        httpServiceProxyFactory.createClient(TicketRepository::class.java)
+        webClientFactory.createClient(TicketRepository::class.java)
     }
 
     suspend fun getTicketByTicketId(ticketId: UUID) =

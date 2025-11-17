@@ -1,7 +1,6 @@
 package dev.slne.surf.data.core.configuration
 
 import dev.slne.surf.data.core.config.dataConfig
-import dev.slne.surf.data.core.context.getBean
 import io.netty.channel.ChannelOption
 import io.netty.handler.timeout.ReadTimeoutHandler
 import io.netty.handler.timeout.WriteTimeoutHandler

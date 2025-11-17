@@ -6,8 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class PaperMain : SuspendingJavaPlugin() {
     override suspend fun onLoadAsync() {
-        DataContext.dataPath = dataPath
-        DataContext.dataClassLoader = classLoader
+        DataContext.initialize(dataPath, classLoader)
     }
 
     override suspend fun onEnableAsync() {

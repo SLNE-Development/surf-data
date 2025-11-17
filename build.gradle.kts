@@ -23,7 +23,6 @@ allprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.springframework.boot")
 
-    // FIXME: Test this?
     configurations.all {
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-reactor")
         exclude(group = "org.jetbrains.kotlinx", module = "kotlinx-coroutines-reactive")

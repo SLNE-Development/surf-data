@@ -2,17 +2,28 @@ package dev.slne.surf.data.core.context
 
 import org.springframework.context.ConfigurableApplicationContext
 import java.nio.file.Path
+import kotlin.properties.Delegates
 
 object DataContext {
-    lateinit var dataPath: Path
-    lateinit var dataClassLoader: ClassLoader
-    lateinit var context: ConfigurableApplicationContext
+    private var initialized by Delegates.notNull<Boolean>()
 
-    @Deprecated("", level = DeprecationLevel.ERROR)
-    inline fun <reified B : Any> ConfigurableApplicationContext.getBean(): B =
-        context.getBean(B::class.java)
+    lateinit var dataPath: Path
+        private set
+
+    lateinit var dataClassLoader: ClassLoader
+        private set
+
+    fun initialize(path: Path, classLoader: ClassLoader) {
+        if (this::dataPath.isInitialized) {
+            throw IllegalStateException("DataContext is already initialized")
+        }
+
+        dataPath = path
+        dataClassLoader = classLoader
+
+        initialized = true
+    }
 }
 
-@Deprecated("", level = DeprecationLevel.ERROR)
-inline fun <reified B : Any> getBean(): B =
-    DataContext.context.getBean(B::class.java)
+inline fun <reified B : Any> ConfigurableApplicationContext.getBean(): B =
+    this.getBean(B::class.java)

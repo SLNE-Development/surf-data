@@ -8,7 +8,8 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.springframework.context.ConfigurableApplicationContext
 
 class PaperMain : SuspendingJavaPlugin() {
-    private lateinit var context: ConfigurableApplicationContext
+    lateinit var context: ConfigurableApplicationContext
+        private set
 
     override suspend fun onLoadAsync() {
         context = DataSpringApplication.start(

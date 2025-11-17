@@ -4,6 +4,5 @@ import dev.slne.surf.data.DataApplication
 
 @DataApplication(
     scanBasePackages = ["dev.slne.surf.data.test.paper"],
-    entityScanBasePackages = ["dev.slne.surf.data.test.paper"]
 )
 class TestApplication
