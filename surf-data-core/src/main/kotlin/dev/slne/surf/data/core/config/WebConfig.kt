@@ -10,17 +10,8 @@ data class WebConfig(
     val bearerToken: String = RandomStringUtils.secureStrong().nextAlphanumeric(128),
 
     @param:Comment("Timeout in milliseconds for establishing a connection")
-    val connectionTimeout: Int = 500,
+    val connectionTimeout: Long = 500,
 
     @param:Comment("Timeout in milliseconds for reading data")
-    val readTimeout: Int = 1500,
-
-    @param:Comment("Timeout in milliseconds for writing data")
-    val writeTimeout: Int = 1500,
-
-    @param:Comment("Timeout in milliseconds for receiving a response")
-    val responseTimeout: Int = 3000,
-
-    @param:Comment("Number of retries for failed requests")
-    val maxRetries: Int = 3,
+    val readTimeout: Long = 1500,
 )

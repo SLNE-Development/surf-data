@@ -1,0 +1,23 @@
+[versions]
+jackson = "2.19.2"
+feign = "13.5"
+
+[libraries]
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+jackson-datatype-jdk8 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8", version.ref = "jackson" }
+jackson-module-parameter-names = { module = "com.fasterxml.jackson.module:jackson-module-parameter-names", version.ref = "jackson" }
+feign-kotlin = { module = "io.github.openfeign:feign-kotlin", version.ref = "feign" }
+feign-jackson = { module = "io.github.openfeign:feign-jackson", version.ref = "feign" }
+
+[bundles]
+jackson-all = [
+    "jackson-module-kotlin",
+    "jackson-datatype-jsr310",
+    "jackson-datatype-jdk8",
+    "jackson-module-parameter-names"
+]
+feign-all = [
+    "feign-kotlin",
+    "feign-jackson"
+]

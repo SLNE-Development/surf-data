@@ -1,12 +1,15 @@
 package dev.slne.surf.data.test.paper.ticket
 
-import org.springframework.stereotype.Component
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.springframework.stereotype.Service
 import java.util.*
 
-@Component
+@Service
 class TicketService(
-    private val ticketRepository: TicketRepository
+    private val ticketClient: TicketClient
 ) {
-    suspend fun getTicketByTicketId(ticketId: UUID) =
-        ticketRepository.findTicketByTicketId(ticketId)
+    suspend fun getTicketByTicketId(ticketId: UUID) = withContext(Dispatchers.IO) {
+        ticketClient.findTicketByTicketId(ticketId)
+    }
 }

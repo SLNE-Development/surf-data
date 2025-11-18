@@ -3,7 +3,7 @@ package dev.slne.surf.data.core.utils
 import kotlin.time.Duration
 import kotlin.time.toKotlinDuration
 
-inline fun <T> measureTimeReturning(block: () -> T): Pair<T, Duration> {
+suspend inline fun <T> measureTimeReturning(block: suspend () -> T): Pair<T, Duration> {
     val start = System.nanoTime()
     val result = block()
     val end = System.nanoTime()
