@@ -26,8 +26,19 @@ class DataWebClientConfiguration {
     }
 
     @Bean
+    fun webClientUrl(): String {
+        val configUrl = dataConfig.web.host
+
+        return if (configUrl.endsWith("/")) {
+            configUrl
+        } else {
+            "$configUrl/"
+        }
+    }
+
+    @Bean
     @Primary
-    fun webClient() = WebClient.builder().baseUrl(dataConfig.web.host)
+    fun webClient() = WebClient.builder().baseUrl(webClientUrl())
         .defaultHeaders { headers ->
             headers.set("Authorization", "Bearer ${dataConfig.web.bearerToken}")
             headers.set("User-Agent", "SurfDiscordBot/1.0")

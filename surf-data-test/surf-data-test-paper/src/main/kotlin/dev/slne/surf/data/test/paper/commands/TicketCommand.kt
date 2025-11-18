@@ -10,6 +10,7 @@ import dev.slne.surf.data.core.utils.measureTimeReturning
 import dev.slne.surf.data.test.paper.plugin
 import dev.slne.surf.data.test.paper.ticket.TicketService
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
+import io.netty.channel.SingleThreadEventLoop
 import java.util.*
 
 private val ticketService get() = plugin.context.getBean<TicketService>()
@@ -18,6 +19,8 @@ fun ticketCommand() = commandAPICommand("ticket") {
     textArgument("ticketId")
 
     anyExecutor { sender, arguments ->
+        println(SingleThreadEventLoop::class.java.classLoader)
+
         val ticketId: String by arguments
 
         val ticketUuid = runCatching {
