@@ -8,7 +8,3 @@ dependencies {
     api("org.springframework.boot:spring-boot-starter-data-redis-reactive")
     api(libs.bundles.ktor.client)
 }
-
-springBoot {
-    mainClass.set("ignore")
-}

@@ -39,4 +39,8 @@ allprojects {
     repositories {
         maven { url = uri("https://repo.spring.io/snapshot") }
     }
+    
+    springBoot {
+        mainClass.set("ignore")
+    }
 }
