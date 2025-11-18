@@ -1,13 +1,14 @@
 package dev.slne.surf.data.test.paper.ticket
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Ticket(
-    val id: Int,
+    @SerialName("ticketUid")
     val ticketId: String
 ) {
     override fun toString(): String {
-        return "Ticket(id=$id, ticketId=$ticketId)"
+        return "Ticket(ticketId='$ticketId')"
     }
 }

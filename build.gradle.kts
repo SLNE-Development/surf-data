@@ -12,7 +12,7 @@ buildscript {
 }
 
 plugins {
-    id("org.springframework.boot") version "3.5.7"
+    id("org.springframework.boot") version "4.0.0-SNAPSHOT"
     id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -23,25 +23,17 @@ allprojects {
     apply(plugin = "io.spring.dependency-management")
     apply(plugin = "org.springframework.boot")
 
-    ext {
-        set("springCloudVersion", "2023.0.6")
-    }
-
-    dependencyManagement {
-        imports {
-            mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
-        }
-    }
-
     tasks.withType<ShadowJar> {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         mergeServiceFiles()
 
         exclude("kotlin/**")
         exclude("kotlinx/**")
-        exclude("io/netty/**")
+//        exclude("io/netty/**")
         exclude("reactor/**")
         exclude("org/reactivestreams/**")
+
+        relocate("io.ktor", "dev.slne.surf.data.shadow.ktor")
     }
 
     repositories {

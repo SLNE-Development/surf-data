@@ -40,9 +40,7 @@ fun ticketCommand() = commandAPICommand("ticket") {
             }
 
             val (ticket, duration) = measureTimeReturning {
-                println(1)
                 ticketService.getTicketByTicketId(ticketUuid)
-                println(2)
             }
 
             sender.sendText {
