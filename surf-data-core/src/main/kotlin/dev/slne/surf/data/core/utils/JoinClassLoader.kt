@@ -7,9 +7,10 @@ import kotlin.math.max
 import kotlin.math.min
 
 class JoinClassLoader(
-    parent: ClassLoader,
+    private val parent: ClassLoader,
     private vararg val delegate: ClassLoader,
 ) : ClassLoader(parent) {
+
     override fun findClass(name: String): Class<*>? {
         val path = name.replace(".", "/") + ".class"
         val url = findResource(path) ?: throw ClassNotFoundException(name)
@@ -81,4 +82,9 @@ class JoinClassLoader(
 
         return buffer
     }
+
+    override fun toString(): String {
+        return "JoinClassLoader(parent=$parent, delegate=${delegate.contentToString()})"
+    }
+    
 }
