@@ -10,7 +10,6 @@ import dev.slne.surf.data.core.utils.measureTimeReturning
 import dev.slne.surf.data.test.paper.plugin
 import dev.slne.surf.data.test.paper.ticket.TicketService
 import dev.slne.surf.surfapi.core.api.messages.adventure.sendText
-import dev.slne.surf.surfapi.core.api.util.logger
 import java.util.*
 
 private val ticketService get() = plugin.context.getBean<TicketService>()
@@ -19,11 +18,6 @@ fun ticketCommand() = commandAPICommand("ticket") {
     textArgument("ticketId")
 
     anyExecutor { sender, arguments ->
-        val log = logger()
-        plugin.context.beanDefinitionNames.forEach {
-            log.atInfo().log("Bean: $it | ${plugin.context.getBean(it)::class.qualifiedName}")
-        }
-
         val ticketId: String by arguments
 
         val ticketUuid = runCatching {
