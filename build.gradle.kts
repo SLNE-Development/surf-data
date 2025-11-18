@@ -33,6 +33,8 @@ allprojects {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
         exclude("kotlin/**")
+        
+        relocate("io.netty", "dev.slne.surf.data.shadow.io.netty")
     }
 
     repositories {
